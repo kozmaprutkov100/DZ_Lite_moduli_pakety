@@ -12,7 +12,7 @@ def validate_book_data(data: dict) -> bool:
         print("Все поля должны быть заполнены.")
         return False
     
-    # Можно добавить дополнительные проверки, например, на тип данных
+    # дополнительные проверки, например, на тип данных
     if not isinstance(data['title'], str) or not isinstance(data['author'], str) or not isinstance(data['style'], str):
         print("Все поля должны быть строками.")
         return False
