@@ -1,4 +1,4 @@
-from utils.data_validation import validate_book_data
+from library_manager.utils.data_validation import validate_book_data
 class Book:
     def __init__(self, title: str, author: str, style: str):
         self.title = title
@@ -11,7 +11,7 @@ class Library:
 
     def add_book(self, title: str, author: str, style: str):
         new_book = Book(title, author, style)
-        if validate_book_data(new_book):
+        if validate_book_data(vars(new_book)):
             self.books.append(new_book)
             print(f'Книга "{title}" автора "{author}" жанр "{style}" \
                 добавлена в библиотеку.')
@@ -29,8 +29,8 @@ class Library:
     def find_book(self, title: str = None, author: str = None, style: str = None):
         found_books = []
         for book in self.books:
-            if (book.title == title) or \
-               (book.author == author) or \
+            if (book.title == title) and \
+               (book.author == author) and \
                (book.style == style):
                     found_books.append(book)
         for book in found_books:
